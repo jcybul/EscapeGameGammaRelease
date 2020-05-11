@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<boardInitializer>
+    <coordinateId>HEX</coordinateId>
+    <locationInitializers>
+        <x>2</x>
+        <y>2</y>
+        <locationType>CLEAR</locationType>
+        <player>PLAYER1</player>
+        <pieceName>HORSE</pieceName>
+    </locationInitializers>
+    <locationInitializers>
+    	<x>1</x>
+    	<y>1</y>
+    	<pieceName>HORSE</pieceName>
+    	<player>PLAYER2</player>
+    	<locationType>CLEAR</locationType></locationInitializers>
+    <locationInitializers>
+        <x>3</x>
+        <y>5</y>
+        <locationType>BLOCK</locationType>
+    </locationInitializers>
+    <locationInitializers>
+    	<locationType>EXIT</locationType>
+    	<x>5</x>
+    	<y>4</y></locationInitializers>
+</boardInitializer>

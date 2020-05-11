@@ -1,0 +1,14 @@
+
+on all three differnt types of games(board types) 
+
+1. When the value is not specified is 1
+2. wehn the value is espcified = given number
+3. rules cant be both point conflict and remove 
+
+For hex board:
+3. exception thrown when from and too are the same destination 
+4. exception thrown when landing on block 
+5. exception thrown when atacking an ally piece
+6. exception move piece in the wrong turn 
+
+

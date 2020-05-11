@@ -1,0 +1,99 @@
+Todo for alpha release
+
+
+CREATE ALL TYPES OF COORDINATES
+   1. Square coordinate distance test:
+
+	(1,1)->(2,2) 1  
+	(1,2)->(3,5) 3 
+	
+	
+   2. Hexagonal Coordinates:
+  	(0,0)->(-1,2)  2 
+  	(-1,2)->(2,-2) 4
+  	(-1,-1)->(1,1) 4
+  	(-1,-1)->(2,0) 4
+  	
+  
+  
+   3. Orthogonal Coordinates:
+  	(1,1)->(2,2) 2
+  	(1,2->(3,5) 5
+  	(7,8)->(4,3) 8
+   4. throw exception when comparing two different coordinate types
+  		Square with orthoSquare -> exception
+  		Orthosquare with hex -> exception
+  		hex with Square   -> exceptionc
+  
+ 
+ 
+ 
+CREATE A SQUARE BOARD FROM FILE 
+
+TEST:													    RETURN:
+CREATE A SQUARE  BOARD WITH ALL THE APROPIATE VALUES		GOOD
+	5.  initialize a board with some pieces from file
+	    get piece that was placed at 2,2
+     	the piece is a horse and placed by player 1
+	
+	8.	acces a cordinate outside of the size of the board 
+			1.one for less than 1 
+			2.one for more than the max
+	
+	10. place a piece on a exit position check is empty
+	
+	11. place a piece on a blocked positon -> exception
+	
+	18. when a null pieces is passed and a piece was 
+	    at given coordinate remove the piece
+	
+	21.  catch exception when coordinate is out of bounds
+	for any of the given fuctions that use it
+	
+	
+
+
+
+CREATE A HEX BOARD FROM FILE
+	6.  initilize board with piece from file 
+		get piece that was placed at 2,2
+		the piece is a horse and placed by player 1
+	
+	14. getInfo from large coordinates to "prove infinity"
+	
+	15. place a piece on a exit position and then check that is null 
+	
+	16. place a piece on a blocked positon
+	
+	17. place a piece on a undeclared postion from file that should be clear
+
+	20.  when a null pieces is passed and a piece was 
+	at given coordinate remove the piece
+	
+
+CREATE AN ORTHO BOARD FROM FIlE
+	7.	initilize board with piece from file 
+		get piece that was placed at 2,2
+		the piece is a horse and placed by player 1
+	
+	9.	acces a cordinate outside of the size of the board 
+			1.one for less than 1 
+			2.one for more than the max
+	
+	12.  place a piece on a exit position and then check that is null 
+	
+	13.  place a piece on a blocked positon
+	
+	19.  when a null pieces is passed and a piece was 
+	     at given coordinate remove the piece
+	
+	22.  catch exception when coordinate is out of bounds
+	for any of the given fuctions that use it
+	
+
+	General test 
+	23.  make a board whit an unknown coordinate type                Null
+
+
+
+
