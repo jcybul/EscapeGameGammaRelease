@@ -41,7 +41,6 @@ public abstract class Game
 			PieceTypeInitializer> PieceTypes){
 	this.PieceTypes = PieceTypes;
 	this.gameRules = gameRules;
-		
 	}
 	
 		/**
@@ -51,13 +50,13 @@ public abstract class Game
 		public String winner() {
 		
 		if(Player1score > Player2score) {
-			return ", Player 1 won";
+			return "PLAYER1";
 		}
 		else if(Player1score == Player2score) {
-			return" , The game si tied ";
+			return", The game is tied";
 		}
 		else {
-			return ", Player 2 won";
+			return "PLAYER2";
 		}
 	}
 		
@@ -66,7 +65,7 @@ public abstract class Game
 		 */
 		public void tunrLimit() {
 			if(gameRules != null && gameRules.containsKey(RuleID.TURN_LIMIT) == true){
-				if(gameRules.get(RuleID.TURN_LIMIT).getIntValue() <= turnHolder) {
+				if(gameRules.get(RuleID.TURN_LIMIT).getIntValue() <= turnHolder -1) {
 					throw new EscapeException(" game turn limit reached");
 				}
 			}
@@ -84,6 +83,39 @@ public abstract class Game
 		
 				}
 					
+			}
+		}
+		
+		/**
+		 * check which piece has the highes value, subtract and 
+		 * @param p
+		 * @param c
+		 * @return
+		 */
+		public EscapePiece conflict(EscapePiece p, EscapePiece c) {
+			int rvalue = Math.abs(p.getValue() - c.getValue());
+			if(p.getValue() > c.getValue()) {
+				p.setValue(rvalue);
+				return p;
+			}
+			else {
+				c.setValue(rvalue);
+				return c;
+			}
+		}
+		
+		/**
+		 * Increment the score of the player depending on the given value and player 
+		 * @param p player
+		 * @param value to increment 
+		 */
+		public void incrementScore(Player p,int value) {
+			if(p == Player.PLAYER1) {
+				Player1score = Player1score + value;
+			}
+			else if(p == Player.PLAYER2) {
+				Player2score = Player2score + value;
+				
 			}
 		}
 

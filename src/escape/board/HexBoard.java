@@ -22,7 +22,7 @@ import escape.util.LocationInitializer;
 public class HexBoard implements Board<HexCoordinate>
 {
 	Map<HexCoordinate, LocationType> hex;
-	Map<HexCoordinate, EscapePiece> pieces;
+	public Map<HexCoordinate, EscapePiece> pieces;
 
 	private final int xmax, ymax;
 
@@ -80,7 +80,6 @@ public class HexBoard implements Board<HexCoordinate>
 	{
 		// check that the piece can be placed in that location
 		// if is at exit location dont place but dont give errors
-
 		this.pieces.put(coord, p);
 	}
 
@@ -96,7 +95,13 @@ public class HexBoard implements Board<HexCoordinate>
 			pieces.remove(from);
 		}
 	}
-
+	/**
+	 * @return the pieces
+	 */
+	public Map<HexCoordinate, EscapePiece> getPieces()
+	{
+		return pieces;
+	}
 	/**
 	 * Description
 	 * 

@@ -1,14 +1,74 @@
 
 on all three differnt types of games(board types) 
 
-1. When the value is not specified is 1
-2. wehn the value is espcified = given number
+exceptions general 
 3. rules cant be both point conflict and remove 
 
 For hex board:
-3. exception thrown when from and too are the same destination 
-4. exception thrown when landing on block 
-5. exception thrown when atacking an ally piece
-6. exception move piece in the wrong turn 
+	3. exception thrown when from and too are the same destination 
+	4. exception thrown when landing on block 
+	5. exception thrown when atacking an ally piece
+	6. exception move piece in the wrong turn 
+	1. When the value is not specified is 1
+	2. when  the value is espcified = given number
+	
+	
+	
+	7-8-9 on one test  player 1 wins 
+	7. check that a game ends when the score is reached and the
+	following moves return that the game is done. 
+	(1,0)->(0,0) score is 2 value is 5; 
+	
+	8. check that when remove is one the piece is removed
+		3,-2 -> 2,-2 
+	9. check if a move is false players turn is kept 
+		(-4,0)-> (-3,1)    no piece at start 
+		
+	
+	10. check that a player has won having a turn limit player 2 wins 
+	make a move 
+	(1,0)->(0,0) score is 2 value is 5; 
+	then player 2 make a move 
+	then catch that player won
+	then attemt move and catch message that is over 
+	
+	11. check point conflict
+		- they have different values 
+		frog(-1,4)->horse(0,4) val 5 - 1 = 4 frog wins p1->p2
+		- they have the same value 
+		horse(-2,5)->(-1,5)  val 1 and 1, both out p2->p1
+		
+	22. check that when they are tied a message is displayed
+		
+	
+For ortho board:
 
-
+	observe
+	12. exception thrown when from and too are the same destination 
+	13.	 exception thrown when landing on block 
+	14.	 exception thrown when atacking an ally piece
+	15.  exception move piece in the wrong turn 
+	16.	 destination too far 
+	17.   When the value is not specified is 1
+	18. when  the value is espcified = given number
+	
+	19-20-21 on one test  player 1 wins 
+	19. check that a game ends when the score is reached and the
+	following moves return that the game is done. 
+	(5,3)->(4,3) score is 5 value is 5; 
+	
+	20. check that when remove is one the piece is removed
+		7,8->8,8
+	21. check if a move is false players turn is kept 
+		(8,3)-> (1,1)    no piece at start 
+		
+	23. check that a player has won having a turn limit player 2 wins 
+	make a move 
+	(1,0)->(0,0) score is 2 value is 5; 
+	then player 2 make a move 
+	then catch that player won
+	then attemt move and catch message that is over 
+	
+	24.check that when they are tied a message is displayed
+	
+	

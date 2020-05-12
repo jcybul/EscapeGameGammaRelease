@@ -4,7 +4,9 @@
     <!-- Board items -->
     <xMax>24</xMax>
     <yMax>18</yMax>
-    
+    <rules>
+       <id>REMOVE</id>
+     </rules>
     <!-- Pieces -->
     <locationInitializers>
         <x>5</x><y>6</y>
@@ -20,15 +22,15 @@
     </locationInitializers>
     <locationInitializers>
         <x>17</x><y>6</y>
-        <player>PLAYER2</player><pieceName>HORSE</pieceName>
+        <player>PLAYER1</player><pieceName>HORSE</pieceName>
     </locationInitializers>
     <locationInitializers>
         <x>19</x><y>2</y>
-        <player>PLAYER2</player><pieceName>HUMMINGBIRD</pieceName>
+        <player>PLAYER1</player><pieceName>HUMMINGBIRD</pieceName>
     </locationInitializers>
     <locationInitializers>
         <x>15</x><y>6</y>
-        <player>PLAYER2</player><pieceName>HUMMINGBIRD</pieceName>
+        <player>PLAYER1</player><pieceName>HUMMINGBIRD</pieceName>
     </locationInitializers>
     <locationInitializers>
         <x>13</x><y>10</y>

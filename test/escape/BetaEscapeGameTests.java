@@ -109,6 +109,7 @@ class BetaEscapeGameTests
         EscapeGameManager emg = egb.makeGameManager();
         assertTrue(emg instanceof SquareGame);
         // Exercise the game now: make moves, check the board, etc.
+        assertTrue(emg.move(emg.makeCoordinate(5,5), emg.makeCoordinate(2, 5)));
         assertTrue(emg.move(emg.makeCoordinate(7,4), emg.makeCoordinate(7, 1)));
     }
     
@@ -120,6 +121,7 @@ class BetaEscapeGameTests
         EscapeGameManager emg = egb.makeGameManager();
         assertTrue(emg instanceof SquareGame);
         // Exercise the game now: make moves, check the board, etc.
+        assertTrue(emg.move(emg.makeCoordinate(5,5), emg.makeCoordinate(2, 5)));
         assertTrue(emg.move(emg.makeCoordinate(1,5), emg.makeCoordinate(1,2)));
     }
     @Test
@@ -130,6 +132,7 @@ class BetaEscapeGameTests
         EscapeGameManager emg = egb.makeGameManager();
         assertTrue(emg instanceof SquareGame);
         // Exercise the game now: make moves, check the board, etc.
+        assertTrue(emg.move(emg.makeCoordinate(5,5), emg.makeCoordinate(2, 5)));
         assertTrue(emg.move(emg.makeCoordinate(4,8), emg.makeCoordinate(1,8)));
     }
     
@@ -152,7 +155,7 @@ class BetaEscapeGameTests
         EscapeGameManager emg = egb.makeGameManager();
         assertTrue(emg instanceof SquareGame);
         LocationInitializer l = new LocationInitializer(0,0,LocationType.BLOCK,Player.PLAYER1, null);
-        // Exercise the game now: make moves, check the board, etc.
+        assertTrue(emg.move(emg.makeCoordinate(5,5), emg.makeCoordinate(2, 5)));
         assertTrue(emg.move(emg.makeCoordinate(5,3), emg.makeCoordinate(3,1)));
         //since is true lets test the move was made
         EscapePiece frog = new EscapePiece(Player.PLAYER2,PieceName.FROG);
@@ -160,20 +163,28 @@ class BetaEscapeGameTests
         assertTrue(frog.equals(emg.getPieceAt(emg.makeCoordinate(3, 1))));
         //reset game 
         emg = egb.makeGameManager();
+        assertTrue(emg.move(emg.makeCoordinate(5,5), emg.makeCoordinate(2, 5)));
         assertTrue(emg.move(emg.makeCoordinate(17,8), emg.makeCoordinate(19,6)));
         emg = egb.makeGameManager();
+        assertTrue(emg.move(emg.makeCoordinate(5,5), emg.makeCoordinate(2, 5)));
         assertTrue(emg.move(emg.makeCoordinate(17,8), emg.makeCoordinate(19,8)));
         emg = egb.makeGameManager();
+        assertTrue(emg.move(emg.makeCoordinate(5,5), emg.makeCoordinate(2, 5)));
         assertTrue(emg.move(emg.makeCoordinate(17,8), emg.makeCoordinate(19,10)));
         emg = egb.makeGameManager();
+        assertTrue(emg.move(emg.makeCoordinate(5,5), emg.makeCoordinate(2, 5)));
         assertTrue(emg.move(emg.makeCoordinate(17,8), emg.makeCoordinate(17,6)));
         emg = egb.makeGameManager();
+        assertTrue(emg.move(emg.makeCoordinate(5,5), emg.makeCoordinate(2, 5)));
         assertTrue(emg.move(emg.makeCoordinate(17,8), emg.makeCoordinate(17,10)));
         emg = egb.makeGameManager();
+        assertTrue(emg.move(emg.makeCoordinate(5,5), emg.makeCoordinate(2, 5)));
         assertTrue(emg.move(emg.makeCoordinate(17,8), emg.makeCoordinate(15,6)));
         emg = egb.makeGameManager();
+        assertTrue(emg.move(emg.makeCoordinate(5,5), emg.makeCoordinate(2, 5)));
         assertTrue(emg.move(emg.makeCoordinate(17,8), emg.makeCoordinate(15,8)));
         emg = egb.makeGameManager();
+        assertTrue(emg.move(emg.makeCoordinate(5,5), emg.makeCoordinate(2, 5)));
         assertTrue(emg.move(emg.makeCoordinate(17,8), emg.makeCoordinate(15,10)));
     }
     
@@ -196,6 +207,7 @@ class BetaEscapeGameTests
         EscapeGameManager emg = egb.makeGameManager();
         assertTrue(emg instanceof SquareGame);
         // Exercise the game now: make moves, check the board, etc.
+        assertTrue(emg.move(emg.makeCoordinate(5,5), emg.makeCoordinate(2, 5)));
         assertTrue(emg.move(emg.makeCoordinate(8,7), emg.makeCoordinate(11,4)));
     }
     
@@ -207,6 +219,7 @@ class BetaEscapeGameTests
         EscapeGameManager emg = egb.makeGameManager();
         assertTrue(emg instanceof SquareGame);
         // Exercise the game now: make moves, check the board, etc.
+        assertTrue(emg.move(emg.makeCoordinate(5,5), emg.makeCoordinate(2, 5)));
         assertTrue(emg.move(emg.makeCoordinate(8,2), emg.makeCoordinate(10,4)));
     }
     
@@ -218,6 +231,7 @@ class BetaEscapeGameTests
         EscapeGameManager emg = egb.makeGameManager();
         assertTrue(emg instanceof SquareGame);
         // Exercise the game now: make moves, check the board, etc.
+        assertTrue(emg.move(emg.makeCoordinate(5,5), emg.makeCoordinate(2, 5)));
         assertTrue(emg.move(emg.makeCoordinate(10,6), emg.makeCoordinate(13,9)));
     }
     
@@ -241,6 +255,7 @@ class BetaEscapeGameTests
         EscapeGameManager emg = egb.makeGameManager();
         assertTrue(emg instanceof SquareGame);
         // Exercise the game now: make moves, check the board, etc.
+        assertTrue(emg.move(emg.makeCoordinate(5,5), emg.makeCoordinate(2, 5)));
         assertTrue(emg.move(emg.makeCoordinate(13,16), emg.makeCoordinate(11,18)));
     }
     
@@ -252,6 +267,7 @@ class BetaEscapeGameTests
         EscapeGameManager emg = egb.makeGameManager();
         assertTrue(emg instanceof SquareGame);
         // Exercise the game now: make moves, check the board, etc.
+        assertTrue(emg.move(emg.makeCoordinate(5,5), emg.makeCoordinate(2, 5)));
         assertTrue(emg.move(emg.makeCoordinate(15,2), emg.makeCoordinate(16,2)));
     }
     
@@ -274,6 +290,7 @@ class BetaEscapeGameTests
         EscapeGameManager emg = egb.makeGameManager();
         assertTrue(emg instanceof SquareGame);
         // Exercise the game now: make moves, check the board, etc.
+        assertTrue(emg.move(emg.makeCoordinate(5,5), emg.makeCoordinate(2, 5)));
         assertTrue(emg.move(emg.makeCoordinate(18,15),emg.makeCoordinate(19,16)));
     }
     @Test
@@ -284,6 +301,7 @@ class BetaEscapeGameTests
         EscapeGameManager emg = egb.makeGameManager();
         assertTrue(emg instanceof SquareGame);
         // Exercise the game now: make moves, check the board, etc.
+        assertTrue(emg.move(emg.makeCoordinate(5,5), emg.makeCoordinate(2, 5)));
         assertTrue(emg.move(emg.makeCoordinate(3,13),emg.makeCoordinate(3,17)));
     }
     
@@ -295,6 +313,7 @@ class BetaEscapeGameTests
         EscapeGameManager emg = egb.makeGameManager();
         assertTrue(emg instanceof SquareGame);
         // Exercise the game now: make moves, check the board, etc.
+        assertTrue(emg.move(emg.makeCoordinate(5,5), emg.makeCoordinate(2, 5)));
         assertTrue(emg.move(emg.makeCoordinate(7,16),emg.makeCoordinate(9,18)));
         assertNull(emg.getPieceAt(emg.makeCoordinate(7, 16)));
     }
@@ -858,7 +877,7 @@ class BetaEscapeGameTests
         assertTrue(emg instanceof SquareGame);
         // Exercise the game now: make moves, check the board, etc.
         assertTrue(emg.move(emg.makeCoordinate(17,18), emg.makeCoordinate(19,18)));
-        assertTrue(emg.move(emg.makeCoordinate(17,19), emg.makeCoordinate(19,19)));
+       
     }
     
     @Test
@@ -952,6 +971,7 @@ class BetaEscapeGameTests
         EscapeGameManager emg = egb.makeGameManager();
         assertTrue(emg instanceof OrthoGame);
         // Exercise the game now: make moves, check the board, etc.
+        assertTrue(emg.move(emg.makeCoordinate(19,11), emg.makeCoordinate(19,13)));
         assertTrue(emg.move(emg.makeCoordinate(3,17), emg.makeCoordinate(6,15)));
     }
     
@@ -963,6 +983,7 @@ class BetaEscapeGameTests
         EscapeGameManager emg = egb.makeGameManager();
         assertTrue(emg instanceof OrthoGame);
         // Exercise the game now: make moves, check the board, etc.
+        assertTrue(emg.move(emg.makeCoordinate(19,11), emg.makeCoordinate(19,13)));
         assertTrue(emg.move(emg.makeCoordinate(4,6), emg.makeCoordinate(6,6)));
     }
     @Test
@@ -994,6 +1015,7 @@ class BetaEscapeGameTests
         EscapeGameManager emg = egb.makeGameManager();
         assertTrue(emg instanceof OrthoGame);
         // Exercise the game now: make moves, check the board, etc.
+        assertTrue(emg.move(emg.makeCoordinate(19,11), emg.makeCoordinate(19,13)));
         assertTrue(emg.move(emg.makeCoordinate(15,4), emg.makeCoordinate(18,4)));
     }
     
@@ -1005,6 +1027,7 @@ class BetaEscapeGameTests
         EscapeGameManager emg = egb.makeGameManager();
         assertTrue(emg instanceof OrthoGame);
         // Exercise the game now: make moves, check the board, etc.
+        assertTrue(emg.move(emg.makeCoordinate(19,11), emg.makeCoordinate(19,13)));
         assertTrue(emg.move(emg.makeCoordinate(15,10), emg.makeCoordinate(17,8)));
     }
     @Test
@@ -1025,6 +1048,7 @@ class BetaEscapeGameTests
         EscapeGameManager emg = egb.makeGameManager();
         assertTrue(emg instanceof OrthoGame);
         // Exercise the game now: make moves, check the board, etc.
+        assertTrue(emg.move(emg.makeCoordinate(19,11), emg.makeCoordinate(19,13)));
         assertTrue(emg.move(emg.makeCoordinate(3,1), emg.makeCoordinate(5,1)));
     }
     @Test
@@ -1035,6 +1059,7 @@ class BetaEscapeGameTests
         EscapeGameManager emg = egb.makeGameManager();
         assertTrue(emg instanceof OrthoGame);
         // Exercise the game now: make moves, check the board, etc.
+        assertTrue(emg.move(emg.makeCoordinate(19,11), emg.makeCoordinate(19,13)));
         assertTrue(emg.move(emg.makeCoordinate(5,3), emg.makeCoordinate(8,3)));
     }
     @Test
@@ -1043,8 +1068,10 @@ class BetaEscapeGameTests
         EscapeGameBuilder egb 
             = new EscapeGameBuilder(new File("config/OrthoOrtho.xml"));
         EscapeGameManager emg = egb.makeGameManager();
+        
         assertTrue(emg instanceof OrthoGame);
         // Exercise the game now: make moves, check the board, etc.
+        assertTrue(emg.move(emg.makeCoordinate(19,11), emg.makeCoordinate(19,13)));
         assertTrue(emg.move(emg.makeCoordinate(16,16), emg.makeCoordinate(18,17)));
       //check piece has been removed
         assertNull(emg.getPieceAt(emg.makeCoordinate(18,17)));
@@ -1081,8 +1108,9 @@ class BetaEscapeGameTests
         EscapeGameBuilder egb 
             = new EscapeGameBuilder(new File("config/OrthoOrtho.xml"));
         EscapeGameManager emg = egb.makeGameManager();
-        assertTrue(emg instanceof OrthoGame);
+        assertTrue(emg instanceof OrthoGame);  
         // Exercise the game now: make moves, check the board, etc.
+        assertTrue(emg.move(emg.makeCoordinate(19,11), emg.makeCoordinate(19,13)));
         assertTrue(emg.move(emg.makeCoordinate(7,10), emg.makeCoordinate(7,11)));
 
     }
@@ -1119,6 +1147,7 @@ class BetaEscapeGameTests
         EscapeGameManager emg = egb.makeGameManager();
         assertTrue(emg instanceof OrthoGame);
         // Exercise the game now: make moves, check the board, etc.
+        assertTrue(emg.move(emg.makeCoordinate(19,11), emg.makeCoordinate(19,13)));
         assertTrue(emg.move(emg.makeCoordinate(12,1), emg.makeCoordinate(16,1)));
 
     }
@@ -1147,6 +1176,7 @@ class BetaEscapeGameTests
         EscapeGameManager emg = egb.makeGameManager();
         assertTrue(emg instanceof OrthoGame);
         // Exercise the game now: make moves, check the board, etc.
+        assertTrue(emg.move(emg.makeCoordinate(19,11), emg.makeCoordinate(19,13)));
         assertTrue(emg.move(emg.makeCoordinate(3,17), emg.makeCoordinate(6,15)));
     }
     
@@ -1157,6 +1187,7 @@ class BetaEscapeGameTests
             = new EscapeGameBuilder(new File("config/OrthoOmni.xml"));
         EscapeGameManager emg = egb.makeGameManager();
         assertTrue(emg instanceof OrthoGame);
+        assertTrue(emg.move(emg.makeCoordinate(19,11), emg.makeCoordinate(19,13)));
         // Exercise the game now: make moves, check the board, etc.
         assertTrue(emg.move(emg.makeCoordinate(4,6), emg.makeCoordinate(6,6)));
     }
@@ -1188,6 +1219,7 @@ class BetaEscapeGameTests
             = new EscapeGameBuilder(new File("config/OrthoOmni.xml"));
         EscapeGameManager emg = egb.makeGameManager();
         assertTrue(emg instanceof OrthoGame);
+        assertTrue(emg.move(emg.makeCoordinate(19,11), emg.makeCoordinate(19,13)));
         // Exercise the game now: make moves, check the board, etc.
         assertTrue(emg.move(emg.makeCoordinate(15,4), emg.makeCoordinate(18,4)));
     }
@@ -1200,6 +1232,7 @@ class BetaEscapeGameTests
         EscapeGameManager emg = egb.makeGameManager();
         assertTrue(emg instanceof OrthoGame);
         // Exercise the game now: make moves, check the board, etc.
+        assertTrue(emg.move(emg.makeCoordinate(19,11), emg.makeCoordinate(19,13)));
         assertTrue(emg.move(emg.makeCoordinate(15,10), emg.makeCoordinate(17,8)));
     }
     @Test
@@ -1219,6 +1252,7 @@ class BetaEscapeGameTests
             = new EscapeGameBuilder(new File("config/OrthoOmni.xml"));
         EscapeGameManager emg = egb.makeGameManager();
         assertTrue(emg instanceof OrthoGame);
+        assertTrue(emg.move(emg.makeCoordinate(19,11), emg.makeCoordinate(19,13)));
         // Exercise the game now: make moves, check the board, etc.
         assertTrue(emg.move(emg.makeCoordinate(3,1), emg.makeCoordinate(5,1)));
     }
@@ -1230,7 +1264,7 @@ class BetaEscapeGameTests
         EscapeGameManager emg = egb.makeGameManager();
         assertTrue(emg instanceof OrthoGame);
         // Exercise the game now: make moves, check the board, etc.
-        assertTrue(emg.move(emg.makeCoordinate(5,3), emg.makeCoordinate(8,3)));
+        assertTrue(emg.move(emg.makeCoordinate(19,11), emg.makeCoordinate(19,13)));
     }
     
     @Test
@@ -1240,6 +1274,7 @@ class BetaEscapeGameTests
             = new EscapeGameBuilder(new File("config/OrthoOmni.xml"));
         EscapeGameManager emg = egb.makeGameManager();
         assertTrue(emg instanceof OrthoGame);
+        assertTrue(emg.move(emg.makeCoordinate(19,11), emg.makeCoordinate(19,13)));
         // Exercise the game now: make moves, check the board, etc.
         assertTrue(emg.move(emg.makeCoordinate(16,16), emg.makeCoordinate(18,17)));
         //check piece has been removed
@@ -1266,6 +1301,7 @@ class BetaEscapeGameTests
         EscapeGameManager emg = egb.makeGameManager();
         assertTrue(emg instanceof OrthoGame);
         // Exercise the game now: make moves, check the board, etc.
+        assertTrue(emg.move(emg.makeCoordinate(19,11), emg.makeCoordinate(19,13)));
         assertTrue(emg.move(emg.makeCoordinate(7,10), emg.makeCoordinate(7,11)));
         EscapePiece p = new EscapePiece(Player.PLAYER2, PieceName.FROG);
         assertTrue(p.equals(emg.getPieceAt(emg.makeCoordinate(7, 11))));
@@ -1301,6 +1337,7 @@ class BetaEscapeGameTests
         EscapeGameManager emg = egb.makeGameManager();
         assertTrue(emg instanceof OrthoGame);
         // Exercise the game now: make moves, check the board, etc.
+        assertTrue(emg.move(emg.makeCoordinate(19,11), emg.makeCoordinate(19,13)));
         assertTrue(emg.move(emg.makeCoordinate(12,1), emg.makeCoordinate(16,1)));
 
     }
@@ -1326,12 +1363,16 @@ class BetaEscapeGameTests
             = new EscapeGameBuilder(new File("config/OrthoLinear.xml"));
         EscapeGameManager emg = egb.makeGameManager();
         assertTrue(emg instanceof OrthoGame);
+        assertTrue(emg.move(emg.makeCoordinate(14,10), emg.makeCoordinate(16,10)));
         assertTrue(emg.move(emg.makeCoordinate(11,6), emg.makeCoordinate(11,8)));
         emg = egb.makeGameManager();
+        assertTrue(emg.move(emg.makeCoordinate(14,10), emg.makeCoordinate(16,10)));
         assertTrue(emg.move(emg.makeCoordinate(11,6), emg.makeCoordinate(11,4)));
         emg = egb.makeGameManager();
+        assertTrue(emg.move(emg.makeCoordinate(14,10), emg.makeCoordinate(16,10)));
         assertTrue(emg.move(emg.makeCoordinate(11,6), emg.makeCoordinate(13,6)));
         emg = egb.makeGameManager();
+        assertTrue(emg.move(emg.makeCoordinate(14,10), emg.makeCoordinate(16,10)));
         assertTrue(emg.move(emg.makeCoordinate(11,6), emg.makeCoordinate(9,6)));
     }
     
@@ -1341,7 +1382,9 @@ class BetaEscapeGameTests
         EscapeGameBuilder egb 
             = new EscapeGameBuilder(new File("config/OrthoLinear.xml"));
         EscapeGameManager emg = egb.makeGameManager();
+       
         assertTrue(emg instanceof OrthoGame);
+        assertTrue(emg.move(emg.makeCoordinate(14,10), emg.makeCoordinate(16,10)));
         assertTrue(emg.move(emg.makeCoordinate(12,15), emg.makeCoordinate(14,15)));
  
     }
@@ -1372,6 +1415,7 @@ class BetaEscapeGameTests
             = new EscapeGameBuilder(new File("config/OrthoLinear.xml"));
         EscapeGameManager emg = egb.makeGameManager();
         assertTrue(emg instanceof OrthoGame);
+        assertTrue(emg.move(emg.makeCoordinate(14,10), emg.makeCoordinate(16,10)));
         assertTrue(emg.move(emg.makeCoordinate(17,13), emg.makeCoordinate(17,16)));
         
     }
@@ -1382,6 +1426,7 @@ class BetaEscapeGameTests
             = new EscapeGameBuilder(new File("config/OrthoLinear.xml"));
         EscapeGameManager emg = egb.makeGameManager();
         assertTrue(emg instanceof OrthoGame);
+        assertTrue(emg.move(emg.makeCoordinate(14,10), emg.makeCoordinate(16,10)));
         assertTrue(emg.move(emg.makeCoordinate(3,3), emg.makeCoordinate(7,3)));
         
     }
@@ -1404,7 +1449,7 @@ class BetaEscapeGameTests
             = new EscapeGameBuilder(new File("config/OrthoLinear.xml"));
         EscapeGameManager emg = egb.makeGameManager();
         assertTrue(emg instanceof OrthoGame);
-        
+        assertTrue(emg.move(emg.makeCoordinate(14,10), emg.makeCoordinate(16,10)));
         assertTrue(emg.move(emg.makeCoordinate(3,14), emg.makeCoordinate(3,16)));
         
     }
@@ -1415,6 +1460,7 @@ class BetaEscapeGameTests
             = new EscapeGameBuilder(new File("config/OrthoLinear.xml"));
         EscapeGameManager emg = egb.makeGameManager();
         assertTrue(emg instanceof OrthoGame);
+        assertTrue(emg.move(emg.makeCoordinate(14,10), emg.makeCoordinate(16,10)));
         assertTrue(emg.move(emg.makeCoordinate(16,6), emg.makeCoordinate(16,7)));
       //check piece has been removed
         assertNull(emg.getPieceAt(emg.makeCoordinate(16,7)));
@@ -1427,7 +1473,7 @@ class BetaEscapeGameTests
             = new EscapeGameBuilder(new File("config/OrthoLinear.xml"));
         EscapeGameManager emg = egb.makeGameManager();
         assertTrue(emg instanceof OrthoGame);
-        
+        assertTrue(emg.move(emg.makeCoordinate(14,10), emg.makeCoordinate(16,10)));
         assertTrue(emg.move(emg.makeCoordinate(7,7), emg.makeCoordinate(7,8)));
         
     }
@@ -1448,7 +1494,9 @@ class BetaEscapeGameTests
         EscapeGameBuilder egb 
             = new EscapeGameBuilder(new File("config/OrthoLinear.xml"));
         EscapeGameManager emg = egb.makeGameManager();
+   
         assertTrue(emg instanceof OrthoGame); 
+        assertTrue(emg.move(emg.makeCoordinate(14,10), emg.makeCoordinate(16,10)));
         assertTrue(emg.move(emg.makeCoordinate(7,13), emg.makeCoordinate(7,15)));
         
     }

@@ -232,14 +232,21 @@ public class OrthoSquareCoordinate implements Coordinate
 		OrthoBoardAStar o = new OrthoBoardAStar(b, this.x,this.y, p);
 		ArrayList<OrthoBoardAStar.Node> path = o.findPathToOrtho(to.getX(),
 				to.getY());
+		int pathsize = path.size()-1;
 		if (path != null
 				&& path.size() - 1 <= PieceTypeInitializer.getMaxDistance(p)) {
 
 			return true;
 		} else {
+			if(path == null) {
+				throw new EscapeException("No path found to destination");
+				
+			}
+			else if(pathsize > PieceTypeInitializer.getMaxDistance(p)) {
+				throw new EscapeException("Destiantion is too far to reach");
+			}
 			return false;
 		}
-
 	}
 
 	/**

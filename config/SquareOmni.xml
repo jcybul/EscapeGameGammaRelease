@@ -4,6 +4,9 @@
     <!-- Board items -->
     <xMax>20</xMax>
     <yMax>25</yMax>
+    <rules>
+       <id>REMOVE</id>
+     </rules>
     <locationInitializers>
     	<x>2</x>
     	<y>8</y>

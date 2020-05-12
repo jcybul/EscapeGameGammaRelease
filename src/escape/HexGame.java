@@ -10,7 +10,7 @@ package escape;
 
 import java.util.*;
 import escape.board.*;
-import escape.board.coordinate.HexCoordinate;
+import escape.board.coordinate.*;
 import escape.exception.EscapeException;
 import escape.piece.*;
 import escape.rule.*;
@@ -39,8 +39,27 @@ public class HexGame extends Game implements EscapeGameManager<HexCoordinate>
 	{
 		super(gameRules,PieceTypes);
 		this.b = b;
+		initicilizePieceValue();
 	}
-
+	
+	
+	/**
+	 * set all the values for the pieces at the start
+	 * of the game
+	 */
+	public void initicilizePieceValue() {
+		if(this.b.getPieces() != null) {
+			for(PieceTypeInitializer t: PieceTypes.values()) {
+			for(EscapePiece p: b.pieces.values()) {
+				if(p.getName() == t.getPieceName()) {
+					p.setValue(PieceTypeInitializer.getValue(t.getAttributes()));
+				}
+			}
+			}
+		}
+	}
+	
+	
 	/*
 	 * @see escape.EscapeGameManager#move(escape.board.coordinate.Coordinate,
 	 * escape.board.coordinate.Coordinate)
@@ -58,8 +77,14 @@ public class HexGame extends Game implements EscapeGameManager<HexCoordinate>
 		}
 		catch(EscapeException e){
 			if(oList.size() >= 1) {
-				oList.get(0).notify("The game has ended" + winner());
+				if(Player1score != Player2score) {
+				oList.get(0).notify("Game is over and " + winner()+ " has won");
 				}
+				else {
+					oList.get(0).notify("Game is over and " + winner());
+				}
+				}
+				
 			return false;
 		}
 		
@@ -74,6 +99,8 @@ public class HexGame extends Game implements EscapeGameManager<HexCoordinate>
 		destIsBlocked(to);
 		//check if there is a piece at the destination 
 		attackAlly(from, to);
+		//must have remove or conflict to attack 
+		removeOrConflict(to);
 		}
 		catch (EscapeException e){
 			if(oList.size() >= 1) {
@@ -90,11 +117,30 @@ public class HexGame extends Game implements EscapeGameManager<HexCoordinate>
 		for (HRules r : list) {
 			try {
 			if (r.hTest(from, to, this)) {
+				// when the rules have remove 
 				if(gameRules != null && gameRules.containsKey(RuleID.REMOVE) && b.getPieceAt(to) != null) {
 					EscapePiece temp = b.getPieceAt(from);
 					b.putPieceAt(temp, to);
 					b.removePieceFrom(from);
 				}
+				// when the rules have point conflict
+				else if(gameRules != null && gameRules.containsKey(RuleID.POINT_CONFLICT) && b.getPieceAt(to) != null) {
+					// when they have the same value remove both
+					if(b.getPieceAt(from).getValue() == b.getPieceAt(to).getValue()) {
+						b.removePieceFrom(from);
+						b.removePieceFrom(to);	
+					}
+					// when they have different values resolve the conflict and place the wining 
+					//pice at the destination 
+					else {
+						EscapePiece temp = conflict(b.getPieceAt(from), b.getPieceAt(to));
+						b.removePieceFrom(from);
+						b.removePieceFrom(to);
+						b.putPieceAt(temp,to);
+					}
+				
+				}
+				// when the to location is empty 
 				else if (b.getPieceAt(to) == null) {
 					EscapePiece temp = b.getPieceAt(from);
 					b.putPieceAtMidGame(temp, to);
@@ -102,16 +148,34 @@ public class HexGame extends Game implements EscapeGameManager<HexCoordinate>
 					b.getPieceAt(to);
 			
 				}
+				// when the exit location is empty
 				if (b.getLocationType(to) == LocationType.EXIT) { 
-					PieceAttribute[] p = PieceTypes.get(b.getPieceAt(to).getName()).getAttributes();
-					int val = PieceTypeInitializer.getValueValue(p);
+					int val = b.getPieceAt(to).getValue();
 					incrementScore(b.getPieceAt(to).getPlayer(),val);
 					b.removePieceFrom(to);
 									}
 				turnHolder++;
+				//  check that after the move the game is over 
+				try {
+					scoreLimit();
+					tunrLimit();
+					}
+					catch(EscapeException e){
+						if(oList.size() >= 1) {
+							if(Player1score != Player2score) {
+							oList.get(0).notify(winner()+ " wins");
+							}
+							else {
+								oList.get(0).notify(winner());
+							}
+							}
+							
+						return true;
+					}
 				return true;
 			}
 			}
+			// catch why the move is false
 			catch (EscapeException e) {
 				if(oList.size() >= 1) {
 					oList.get(0).notify(e.getMessage());
@@ -173,21 +237,7 @@ public class HexGame extends Game implements EscapeGameManager<HexCoordinate>
 		}
 	}
 		
-	
-	/**
-	 * Increment the score of the player depending on the given value and player 
-	 * @param p player
-	 * @param value to increment 
-	 */
-	public void incrementScore(Player p,int value) {
-		if(p == Player.PLAYER1) {
-			Player1score = Player1score + value;
-		}
-		else if(p == Player.PLAYER2) {
-			Player2score = Player2score + value;
-			
-		}
-	}
+
 	/**
 	 * check that there is a piece at the starting location in order to move
 	 * @param from
@@ -195,6 +245,17 @@ public class HexGame extends Game implements EscapeGameManager<HexCoordinate>
 	public void emptyFromLocation(HexCoordinate from) {
 		if(b.getPieceAt(from) == null) {
 			throw new EscapeException("Starting location must have a piece to move");
+		}
+	}
+	
+	/**
+	 * throw exception if to is not null and cant conflict or remove
+	 */
+	public void removeOrConflict(HexCoordinate to){
+		if(b.getPieceAt(to) != null) {
+		if(gameRules == null || !gameRules.containsKey(RuleID.REMOVE) && !gameRules.containsKey(RuleID.POINT_CONFLICT)) {
+			throw new EscapeException("Must have remove or point conflict to attack a piece");
+		}
 		}
 	}
 	

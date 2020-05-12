@@ -124,21 +124,6 @@ public class PieceTypeInitializer
     }
     
     /**
-     * get the distance it can move if it exists
-     * @param p
-     * @return
-     */
-    public static int getValueValue(PieceAttribute[] p) {
-    	int ret = 1;
-    	for(PieceAttribute d:p) {
-    		if(d.getId() == PieceAttributeID.VALUE) {
-    			ret = d.getIntValue();
-    		}
-    	}
-    	return ret;
-    }
-    
-    /**
      * get the value a piece has 
      * @param p
      * @return one as the default value it has

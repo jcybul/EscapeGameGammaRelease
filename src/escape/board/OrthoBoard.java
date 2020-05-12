@@ -23,7 +23,7 @@ import escape.piece.EscapePiece;
 public class OrthoBoard implements Board<OrthoSquareCoordinate>
 {
 	Map<OrthoSquareCoordinate, LocationType> ortho;
-	Map<OrthoSquareCoordinate, EscapePiece> pieces;
+	public Map<OrthoSquareCoordinate, EscapePiece> pieces;
 
 	private final int xMax, yMax;
 
@@ -123,6 +123,27 @@ public class OrthoBoard implements Board<OrthoSquareCoordinate>
 		}
 		return ortho.get(coord);
 
+	}
+	
+	/**
+	 * This method is a forced puth piece, be carefull when
+	 * using
+	 * @param p
+	 * @param coord
+	 */
+	public void putPieceAtMidGame(EscapePiece p, OrthoSquareCoordinate coord)
+	{
+		// check that the piece can be placed in that location
+		// if is at exit location dont place but dont give errors
+		this.pieces.put(coord, p);
+	}
+	
+	/**
+	 * @return the pieces
+	 */
+	public Map<OrthoSquareCoordinate, EscapePiece> getPieces()
+	{
+		return pieces;
 	}
 
 }

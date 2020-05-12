@@ -4,6 +4,9 @@
     <!-- Board items -->
     <xMax>20</xMax>
     <yMax>25</yMax>
+    <rules>
+       <id>REMOVE</id>
+     </rules>
     <locationInitializers> <!-- An array of these, 0 or more -->
         <x>3</x>
         <y>4</y>

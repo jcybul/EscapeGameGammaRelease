@@ -2,6 +2,9 @@
 <escapeGameInitializer>
 	<coordinateType>ORTHOSQUARE</coordinateType>
     <!-- Board items -->
+    <rules>
+       <id>REMOVE</id>
+     </rules>
     <xMax>20</xMax>
     <yMax>25</yMax>
     <locationInitializers> <!-- An array of these, 0 or more -->
@@ -202,7 +205,7 @@
         <x>19</x>
         <y>11</y>
         <pieceName>SNAIL</pieceName>
-        <player>PLAYER2</player>
+        <player>PLAYER1</player>
     </locationInitializers>
     <locationInitializers>
         <x>14</x>

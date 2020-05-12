@@ -19,6 +19,7 @@ import java.io.File;
 import java.util.ArrayList;
 import org.junit.Test;
 import org.junit.jupiter.api.Tag;
+import escape.board.coordinate.*;
 
 /**
  * Description
@@ -48,10 +49,13 @@ public class ObserverTest implements GameObserver
 		
 	}
 	
+	
+	/// hex game observer test
+	
 	@Test
 	public void HexGametestobserver() throws Exception {
 		EscapeGameBuilder egb 
-        = new EscapeGameBuilder(new File("config/Final/Final1.xml"));
+        = new EscapeGameBuilder(new File("config/Final/HexObserver.xml"));
     EscapeGameManager emg = egb.makeGameManager();
     assertTrue(emg instanceof HexGame);  
     ObserverTest ot = new ObserverTest();
@@ -67,7 +71,7 @@ public class ObserverTest implements GameObserver
 	@Test
 	public void HexGamemoveToSameLocation() throws Exception {
 		EscapeGameBuilder egb 
-        = new EscapeGameBuilder(new File("config/Final/Final1.xml"));
+        = new EscapeGameBuilder(new File("config/Final/HexObserver.xml"));
     EscapeGameManager emg = egb.makeGameManager();
     assertTrue(emg instanceof HexGame);  
     ObserverTest ot = new ObserverTest();
@@ -79,7 +83,7 @@ public class ObserverTest implements GameObserver
 	@Test
 	public void HexGameLandOnBlockedLocation() throws Exception {
 		EscapeGameBuilder egb 
-        = new EscapeGameBuilder(new File("config/Final/Final1.xml"));
+        = new EscapeGameBuilder(new File("config/Final/HexObserver.xml"));
     EscapeGameManager emg = egb.makeGameManager();
     assertTrue(emg instanceof HexGame);  
     ObserverTest ot = new ObserverTest();
@@ -91,7 +95,7 @@ public class ObserverTest implements GameObserver
 	@Test
 	public void HexGameLandOnAlly() throws Exception {
 		EscapeGameBuilder egb 
-        = new EscapeGameBuilder(new File("config/Final/Final1.xml"));
+        = new EscapeGameBuilder(new File("config/Final/HexObserver.xml"));
     EscapeGameManager emg = egb.makeGameManager();
     assertTrue(emg instanceof HexGame);  
     ObserverTest ot = new ObserverTest();
@@ -104,7 +108,7 @@ public class ObserverTest implements GameObserver
     public void HexGameDistanceMoreThanAllowed() throws Exception
     {
         EscapeGameBuilder egb 
-            = new EscapeGameBuilder(new File("config/HexLinear.xml"));
+            = new EscapeGameBuilder(new File("config/Final/HexObserver.xml"));
         EscapeGameManager emg = egb.makeGameManager();
         assertTrue(emg instanceof HexGame); 
         ObserverTest ot = new ObserverTest();
@@ -118,7 +122,7 @@ public class ObserverTest implements GameObserver
     public void HexGameWrongTurnPlayer1() throws Exception
     {
         EscapeGameBuilder egb 
-            = new EscapeGameBuilder(new File("config/Final/Final1.xml"));
+            = new EscapeGameBuilder(new File("config/Final/HexObserver.xml"));
         EscapeGameManager emg = egb.makeGameManager();
         assertTrue(emg instanceof HexGame); 
         ObserverTest ot = new ObserverTest();
@@ -132,7 +136,7 @@ public class ObserverTest implements GameObserver
     public void HexGameWrongTurnPLayer2() throws Exception
     {
         EscapeGameBuilder egb 
-            = new EscapeGameBuilder(new File("config/Final/Final1.xml"));
+            = new EscapeGameBuilder(new File("config/Final/HexObserver.xml"));
         EscapeGameManager emg = egb.makeGameManager();
         assertTrue(emg instanceof HexGame); 
         ObserverTest ot = new ObserverTest();
@@ -144,10 +148,90 @@ public class ObserverTest implements GameObserver
     }
 	
     
+	// orho game observer test 
+	
+	@Test
+	public void OrthoGameMoveToSameLocation() throws Exception {
+		EscapeGameBuilder egb 
+        = new EscapeGameBuilder(new File("config/Final/OrthoObserver.xml"));
+    EscapeGameManager emg = egb.makeGameManager();
+    assertTrue(emg instanceof OrthoGame);  
+    ObserverTest ot = new ObserverTest();
+    emg.addObserver(ot);
+    emg.move(emg.makeCoordinate(5, 3),emg.makeCoordinate(5, 3));
+    assertEquals(ot.m, "Cant go to the same place it comes from");
+	}
+	
+	@Test
+	public void OrthoGameLandOnBlock() throws Exception {
+		EscapeGameBuilder egb 
+        = new EscapeGameBuilder(new File("config/Final/OrthoObserver.xml"));
+    EscapeGameManager emg = egb.makeGameManager();
+    assertTrue(emg instanceof OrthoGame);  
+    ObserverTest ot = new ObserverTest();
+    emg.addObserver(ot);
+    emg.move(emg.makeCoordinate(5, 3),emg.makeCoordinate(5, 2));
+    assertEquals(ot.m, "Cant Land on a Blocked Location");
+	}
+	
+	@Test
+	public void OrthoGameLandAttackAlly() throws Exception {
+		EscapeGameBuilder egb 
+        = new EscapeGameBuilder(new File("config/Final/OrthoObserver.xml"));
+    EscapeGameManager emg = egb.makeGameManager();
+    assertTrue(emg instanceof OrthoGame);  
+    ObserverTest ot = new ObserverTest();
+    emg.addObserver(ot);
+    emg.move(emg.makeCoordinate(7, 8),emg.makeCoordinate(8, 8));
+    assertEquals(ot.m, "The piece at the destination must be an enemy peice");
+	}
 	
 	
+	@Test
+	public void OrthoGameWrongTurn() throws Exception {
+		EscapeGameBuilder egb 
+        = new EscapeGameBuilder(new File("config/Final/OrthoObserver.xml"));
+    EscapeGameManager emg = egb.makeGameManager();
+    assertTrue(emg instanceof OrthoGame);  
+    ObserverTest ot = new ObserverTest();
+    emg.addObserver(ot);
+    emg.move(emg.makeCoordinate(8,3),emg.makeCoordinate(8, 4));
+    assertEquals(ot.m, "Is Player 1 turn");
+	}
 	
+	@Test
+	public void OrthoGameTooFar() throws Exception {
+		EscapeGameBuilder egb 
+        = new EscapeGameBuilder(new File("config/Final/OrthoObserver.xml"));
+    EscapeGameManager emg = egb.makeGameManager();
+    assertTrue(emg instanceof OrthoGame);  
+    ObserverTest ot = new ObserverTest();
+    emg.addObserver(ot);
+    emg.move(emg.makeCoordinate(5,3),emg.makeCoordinate(1, 5));
+    assertEquals(ot.m, "Destiantion is too far to reach");
+	}
 	
+	@Test
+    public void OrthoGameCheckDefaultValueIsOne() throws Exception
+    {
+        EscapeGameBuilder egb 
+            = new EscapeGameBuilder(new File("config/Final/OrthoObserver.xml"));
+        EscapeGameManager emg = egb.makeGameManager();
+        assertTrue(emg instanceof OrthoGame);  
+        assertEquals(1,emg.getPieceAt(OrthoSquareCoordinate.makeCoordinate(5, 3)).getValue());
+ 
+    }
+	
+	@Test
+    public void OrhoGameCheckDefaultValueIsGiven() throws Exception
+    {
+        EscapeGameBuilder egb 
+            = new EscapeGameBuilder(new File("config/Final/OrthoObserver.xml"));
+        EscapeGameManager emg = egb.makeGameManager();
+        assertTrue(emg instanceof OrthoGame);  
+        assertEquals(5,emg.getPieceAt(OrthoSquareCoordinate.makeCoordinate(8, 3)).getValue());
+ 
+    }
 	
 	
 

@@ -108,6 +108,20 @@ public class SquareBoard implements Board<SquareCoordinate>
 		}
 	}
 
+	
+	/**
+	 * This method is a forced puth piece, be carefull when
+	 * using
+	 * @param p
+	 * @param coord
+	 */
+	public void putPieceAtMidGame(EscapePiece p, SquareCoordinate coord)
+	{
+		// check that the piece can be placed in that location
+		// if is at exit location dont place but dont give errors
+		this.pieces.put(coord, p);
+	}
+	
 	/**
 	 * Description get location type at given coordinate,
 	 * 

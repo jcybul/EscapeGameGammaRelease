@@ -18,7 +18,7 @@ public class EscapePiece
 {
 	private final PieceName name;
 	private final Player player;
-
+	public int value;
 
 	/**
 	 * Constructor that takes the player and piece name.
@@ -47,6 +47,21 @@ public class EscapePiece
 		return new EscapePiece(player, name);
 	}
 
+	/**
+	 * @param value the value to set
+	 */
+	public void setValue(int value)
+	{
+		this.value = value;
+	}
+	
+	/**
+	 * @return the value
+	 */
+	public int getValue()
+	{
+		return value;
+	}
 	/**
 	 * @return the name
 	 */
