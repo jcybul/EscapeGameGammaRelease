@@ -2,9 +2,12 @@
 on all three differnt types of games(board types) 
 
 exceptions general 
-3. rules cant be both point conflict and remove 
+3. rules cant be both point conflict and remove
+4. no error when no rules 
+
 
 For hex board:
+
 	3. exception thrown when from and too are the same destination 
 	4. exception thrown when landing on block 
 	5. exception thrown when atacking an ally piece
@@ -39,6 +42,8 @@ For hex board:
 		horse(-2,5)->(-1,5)  val 1 and 1, both out p2->p1
 		
 	22. check that when they are tied a message is displayed
+	
+	
 		
 	
 For ortho board:
@@ -70,5 +75,33 @@ For ortho board:
 	then attemt move and catch message that is over 
 	
 	24.check that when they are tied a message is displayed
+	
+For Square Game:
+	
+	25. exception thrown when from and too are the same destination
+	26. exception thrown when landing on block
+	27.	 exception thrown when atacking an ally piece
+	28.  exception move piece in the wrong turn
+	29.	 destination too far
+	30. When the value is not specified is 1
+	31. when  the value is espcified = given number
+	
+	
+	19-20-21 on one test  player 1 wins 
+	19. check that a game ends when the score is reached and the
+	following moves return that the game is done. 
+	(5,3)->(4,3) score is 5 value is 5; 
+
+	20. check that when remove is on the piece is removed
+		7,8->8,8
+	21. check if a move is false players turn is kept 
+		(8,3)-> (1,1)    no piece at start 
+	
+	
+	
+	
+	
+	
+	
 	
 	

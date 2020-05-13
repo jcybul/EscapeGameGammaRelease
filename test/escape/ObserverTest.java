@@ -208,7 +208,7 @@ public class ObserverTest implements GameObserver
     ObserverTest ot = new ObserverTest();
     emg.addObserver(ot);
     emg.move(emg.makeCoordinate(5,3),emg.makeCoordinate(1, 5));
-    assertEquals(ot.m, "Destiantion is too far to reach");
+    assertEquals(ot.m, "Destination is too far to reach");
 	}
 	
 	@Test
@@ -233,11 +233,88 @@ public class ObserverTest implements GameObserver
  
     }
 	
+	// square game observer test 
+	@Test
+	public void SquareGameMoveToSameLocation() throws Exception {
+		EscapeGameBuilder egb 
+        = new EscapeGameBuilder(new File("config/Final/SquareObserver.xml"));
+    EscapeGameManager emg = egb.makeGameManager();
+    assertTrue(emg instanceof SquareGame);  
+    ObserverTest ot = new ObserverTest();
+    emg.addObserver(ot);
+    emg.move(emg.makeCoordinate(5, 3),emg.makeCoordinate(5, 3));
+    assertEquals(ot.m, "Cant go to the same place it comes from");
+	}
 	
-
+	@Test
+	public void SquareGameLandOnBlock() throws Exception {
+		EscapeGameBuilder egb 
+        = new EscapeGameBuilder(new File("config/Final/SquareObserver.xml"));
+    EscapeGameManager emg = egb.makeGameManager();
+    assertTrue(emg instanceof SquareGame);  
+    ObserverTest ot = new ObserverTest();
+    emg.addObserver(ot);
+    emg.move(emg.makeCoordinate(5, 3),emg.makeCoordinate(5, 2));
+    assertEquals(ot.m, "Cant Land on a Blocked Location");
+	}
 	
-
-
+	@Test
+	public void SquareGameLandAttackAlly() throws Exception {
+		EscapeGameBuilder egb 
+        = new EscapeGameBuilder(new File("config/Final/SquareObserver.xml"));
+    EscapeGameManager emg = egb.makeGameManager();
+    assertTrue(emg instanceof SquareGame);  
+    ObserverTest ot = new ObserverTest();
+    emg.addObserver(ot);
+    emg.move(emg.makeCoordinate(7, 8),emg.makeCoordinate(8, 8));
+    assertEquals(ot.m, "The piece at the destination must be an enemy peice");
+	}
+	
+	@Test
+	public void SquareGameWrongTurn() throws Exception {
+		EscapeGameBuilder egb 
+        = new EscapeGameBuilder(new File("config/Final/SquareObserver.xml"));
+    EscapeGameManager emg = egb.makeGameManager();
+    assertTrue(emg instanceof SquareGame);  
+    ObserverTest ot = new ObserverTest();
+    emg.addObserver(ot);
+    emg.move(emg.makeCoordinate(8,3),emg.makeCoordinate(8, 4));
+    assertEquals(ot.m, "Is Player 1 turn");
+	}
+	
+	@Test
+	public void SquareGameTooFar() throws Exception {
+		EscapeGameBuilder egb 
+        = new EscapeGameBuilder(new File("config/Final/SquareObserver.xml"));
+    EscapeGameManager emg = egb.makeGameManager();
+    assertTrue(emg instanceof SquareGame);  
+    ObserverTest ot = new ObserverTest();
+    emg.addObserver(ot);
+    emg.move(emg.makeCoordinate(5,3),emg.makeCoordinate(1, 5));
+    assertEquals(ot.m, "Destination is too far to reach");
+	}
+	
+	@Test
+    public void SquareGameCheckDefaultValueIsOne() throws Exception
+    {
+        EscapeGameBuilder egb 
+            = new EscapeGameBuilder(new File("config/Final/SquareObserver.xml"));
+        EscapeGameManager emg = egb.makeGameManager();
+        assertTrue(emg instanceof SquareGame);  
+        assertEquals(1,emg.getPieceAt(SquareCoordinate.makeCoordinate(5, 3)).getValue());
+ 
+    }
+	
+	@Test
+    public void SquareGameCheckDefaultValueIsGiven() throws Exception
+    {
+        EscapeGameBuilder egb 
+            = new EscapeGameBuilder(new File("config/Final/SquareObserver.xml"));
+        EscapeGameManager emg = egb.makeGameManager();
+        assertTrue(emg instanceof SquareGame);  
+        assertEquals(5,emg.getPieceAt(SquareCoordinate.makeCoordinate(8, 3)).getValue());
+ 
+    }
 	
 	
 	

@@ -22,14 +22,13 @@ import escape.util.PieceTypeInitializer.PieceAttribute;
  * 
  * @version 3 may. 2020
  */
-public class OrthoBoardAStar extends Astar 
+public class OrthoBoardAStar extends Astar
 {
 
 	private final ArrayList<Node> open;
 	private final ArrayList<Node> closed;
 	private final ArrayList<Node> path;
 	private Node now;
-
 
 	// Node class for convienience
 	public static class Node implements Comparable
@@ -57,14 +56,14 @@ public class OrthoBoardAStar extends Astar
 		}
 	}
 
-	public OrthoBoardAStar(OrthoBoard b,int fromx,int fromy,
-			PieceAttribute[] p)
+	public OrthoBoardAStar(OrthoBoard b, int fromx, int fromy, PieceAttribute[] p)
 	{
-		super(b,fromx,fromy,p);
+		super(b, fromx, fromy, p);
 		this.open = new ArrayList<>();
 		this.closed = new ArrayList<>();
 		this.path = new ArrayList<>();
-		this.now = new Node(null, OrthoSquareCoordinate.makeCoordinate(fromx, fromy), 0, 0);
+		this.now = new Node(null, OrthoSquareCoordinate.makeCoordinate(fromx, fromy),
+				0, 0);
 	}
 
 	/*
@@ -121,10 +120,12 @@ public class OrthoBoardAStar extends Astar
 										OrthoSquareCoordinate.makeCoordinate(x, y)));
 				if ((x != 0 || y != 0) && (x != -1 || y != -1) && (x != -1 || y != 1)
 						&& (x != 1 || y != -1) && (x != 1 || y != 1) // not this.now
-						&& this.now.x + x >= 1 && this.now.x + x < ((OrthoBoard) b).getXMax() // check
-																				// maze
-																				// boundaries
-						&& this.now.y + y >= 1 && this.now.y + y < ((OrthoBoard) b).getYMax() && (
+						&& this.now.x + x >= 1
+						&& this.now.x + x < ((OrthoBoard) b).getXMax() // check
+						// maze
+						// boundaries
+						&& this.now.y + y >= 1
+						&& this.now.y + y < ((OrthoBoard) b).getYMax() && (
 
 						// check location is not blocked or can fly or can unlblock
 						((OrthoBoard) b).getLocationType(
@@ -133,8 +134,9 @@ public class OrthoBoardAStar extends Astar
 								|| PieceTypeInitializer.canUnblock(p)
 								|| PieceTypeInitializer.canFly(p))
 						// check location is not exit or is the end
-						&& (((OrthoBoard) b).getLocationType(OrthoSquareCoordinate.makeCoordinate(
-								this.now.x + x, this.now.y + y)) != LocationType.EXIT
+						&& (((OrthoBoard) b).getLocationType(
+								OrthoSquareCoordinate.makeCoordinate(this.now.x + x,
+										this.now.y + y)) != LocationType.EXIT
 								|| PieceTypeInitializer.canFly(p)
 								|| OrthoSquareCoordinate.makeCoordinate(xend, yend)
 										.equals(OrthoSquareCoordinate.makeCoordinate(

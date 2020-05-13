@@ -23,8 +23,7 @@ import escape.piece.EscapePiece;
 public class SquareBoard implements Board<SquareCoordinate>
 {
 	Map<SquareCoordinate, LocationType> squares;
-	Map<SquareCoordinate, EscapePiece> pieces;
-	private CoordinateID coorType = CoordinateID.SQUARE;
+	public Map<SquareCoordinate, EscapePiece> pieces;
 
 	private final int xMax, yMax;
 
@@ -108,10 +107,9 @@ public class SquareBoard implements Board<SquareCoordinate>
 		}
 	}
 
-	
 	/**
-	 * This method is a forced puth piece, be carefull when
-	 * using
+	 * This method is a forced puth piece, be carefull when using
+	 * 
 	 * @param p
 	 * @param coord
 	 */
@@ -121,7 +119,7 @@ public class SquareBoard implements Board<SquareCoordinate>
 		// if is at exit location dont place but dont give errors
 		this.pieces.put(coord, p);
 	}
-	
+
 	/**
 	 * Description get location type at given coordinate,
 	 * 
@@ -135,5 +133,13 @@ public class SquareBoard implements Board<SquareCoordinate>
 		}
 		return squares.get(coord);
 
+	}
+
+	/**
+	 * @return the pieces
+	 */
+	public Map<SquareCoordinate, EscapePiece> getPieces()
+	{
+		return pieces;
 	}
 }

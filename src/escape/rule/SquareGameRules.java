@@ -8,9 +8,10 @@
 
 package escape.rule;
 
-import escape.SquareGame;
+import escape.*;
 import escape.board.*;
 import escape.board.coordinate.*;
+import escape.exception.EscapeException;
 import escape.piece.MovementPatternID;
 import escape.util.PieceTypeInitializer;
 
@@ -54,7 +55,7 @@ public class SquareGameRules
 	// the path is diagonal
 	from.sameDiagonal(to) &&
 	// the distance is inside what is allowed
-			getDistance.TestRule(from, to, g) &&
+			linearTestDistance(from, to, g) &&
 			// the path is clear from pieces or (it can jump there is a jumpable path) or
 			// can fly
 			(from.diagonalIsLocationClear(to, (SquareBoard) g.b, null, true, false)
@@ -80,7 +81,7 @@ public class SquareGameRules
 	// is a ortogonal path to destination
 	from.sameOrthogonal(to) &&
 	// the distance is allowed flying or normal moving
-			getDistance.TestRule(from, to, g) &&
+			linearTestDistance(from, to, g) &&
 			// the path is clear from pieces or (it can jump and there is a jumpable path)
 			// or can fly
 			(from.orthagonalILocationClear(to, (SquareBoard) g.b, null, true, false)
@@ -107,7 +108,6 @@ public class SquareGameRules
 	 */
 	static Rules DiagonalRules = (from, to,
 			g) -> ((SquareBoard) g.b).getLocationType(to) != LocationType.BLOCK
-					&& getDistance.TestRule(from, to, g)
 					&& from.PathFind(g.b, to, MovementPatternID.DIAGONAL,
 							(g.PieceTypes.get(g.b.getPieceAt(from).getName())
 									.getAttributes()));
@@ -118,7 +118,6 @@ public class SquareGameRules
 
 	static Rules OmniRules = (from, to,
 			g) -> ((SquareBoard) g.b).getLocationType(to) != LocationType.BLOCK
-					&& getDistance.TestRule(from, to, g)
 					&& from.PathFind(g.b, to, MovementPatternID.OMNI, (g.PieceTypes
 							.get(g.b.getPieceAt(from).getName()).getAttributes()));
 
@@ -127,9 +126,18 @@ public class SquareGameRules
 	 */
 	static Rules OrthoRules = (from, to,
 			g) -> ((SquareBoard) g.b).getLocationType(to) != LocationType.BLOCK
-					&& getDistance.TestRule(from, to, g)
 					&& from.PathFind(g.b, to, MovementPatternID.ORTHOGONAL,
 							(g.PieceTypes.get(g.b.getPieceAt(from).getName())
 									.getAttributes()));
+
+	private static boolean linearTestDistance(SquareCoordinate from,
+			SquareCoordinate to, SquareGame g)
+	{
+		if (getDistance.TestRule(from, to, g)) {
+			return true;
+		} else {
+			throw new EscapeException("Destiantion is too far to reach");
+		}
+	}
 
 }

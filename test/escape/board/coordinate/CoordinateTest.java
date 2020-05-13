@@ -111,7 +111,17 @@ class CoordinateTest
 		Assertions.assertThrows(EscapeException.class, ()-> OrthoSquareCoordinate.makeCoordinate(1,2).distanceTo(HexCoordinate.makeCoordinate(3,5)));
 	}
 	
+	// test equals
 	
+	@Test
+	void OrthoNotEquals() {
+		assertFalse(OrthoSquareCoordinate.makeCoordinate(2, 2).equals(HexCoordinate.makeCoordinate(1, 1)));
+	}
+	
+	@Test
+	void HexNotEquals() {
+		assertFalse(HexCoordinate.makeCoordinate(2, 2).equals(SquareCoordinate.makeCoordinate(1, 1)));
+	}
 	
 	
 	

@@ -128,7 +128,7 @@ public class HexCoordinate implements Coordinate
 		else if (this.getX() < to.getX() && this.getY() > to.getY()) {
 
 			int ypos = this.getY() - 1;
-			int xpos = this.getX() +1;
+			int xpos = this.getX() + 1;
 			int jumpCounter = 0;
 			for (int i = 0; i < this.distanceTo(to) - 1; i++) {
 
@@ -312,18 +312,18 @@ public class HexCoordinate implements Coordinate
 	public boolean PathFind(HexBoard b, HexCoordinate to, PieceAttribute[] p)
 	{
 
-		HexBoardAStar o = new HexBoardAStar(b, this.x,this.y, p);
+		HexBoardAStar o = new HexBoardAStar(b, this.x, this.y, p);
 		ArrayList<HexBoardAStar.Node> path = o.findPathToHex(to.getX(), to.getY());
-		int pathsize = path.size()-1;
+
 		if (path != null
 				&& path.size() - 1 <= PieceTypeInitializer.getMaxDistance(p)) {
 			return true;
 		} else {
-			if(path == null) {
-				throw new EscapeException("No path found to destination");
-				
+			if (path == null) {
+				throw new EscapeException("invalid Path ");
 			}
-			else if(pathsize > PieceTypeInitializer.getMaxDistance(p)) {
+
+			if (path.size() - 1 > PieceTypeInitializer.getMaxDistance(p)) {
 				throw new EscapeException("Destiantion is too far to reach");
 			}
 			return false;

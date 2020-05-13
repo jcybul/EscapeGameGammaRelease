@@ -31,22 +31,23 @@ public interface GameFactory
 	 * @return
 	 */
 	public static EscapeGameManager CreateGame(CoordinateID id, Board b,
-			HashMap<PieceName, PieceTypeInitializer> types,HashMap<RuleID,Rule> gameRules)
+			HashMap<PieceName, PieceTypeInitializer> types,
+			HashMap<RuleID, Rule> gameRules)
 	{
 
 		EscapeGameManager ret = null;
 		switch (id) {
 			// switch depending on the CoordinateID
 			case SQUARE:
-				ret = new SquareGame(types,gameRules,(SquareBoard) b) {
+				ret = new SquareGame(types, gameRules, (SquareBoard) b) {
 				};
 				break;
 			case HEX:
-				ret = new HexGame(types,gameRules,(HexBoard) b);
+				ret = new HexGame(types, gameRules, (HexBoard) b);
 				break;
 
 			case ORTHOSQUARE:
-				ret = new OrthoGame(types,gameRules,(OrthoBoard) b);
+				ret = new OrthoGame(types, gameRules, (OrthoBoard) b);
 				break;
 		}
 		return ret;

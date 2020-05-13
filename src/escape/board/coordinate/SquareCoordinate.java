@@ -420,62 +420,52 @@ public class SquareCoordinate implements Coordinate
 		switch (pattern) {
 
 			case OMNI:
-				SquareBoardAStar star = new SquareBoardAStar(b, this.x,this.y, p);
+				SquareBoardAStar star = new SquareBoardAStar(b, this.x, this.y, p);
 				ArrayList<Node> l = star.findPathToOmni(to.getX(), to.getY());
 				if (l != null
 						&& l.size() - 1 <= PieceTypeInitializer.getMaxDistance(p)) {
 					return true;
 				} else {
-					return false;
+					if (l == null) {
+						throw new EscapeException("invalid path");
+					}
+					if (l.size() - 1 > PieceTypeInitializer.getMaxDistance(p)) {
+						throw new EscapeException("Destination is too far to reach");
+					}
 				}
 			case DIAGONAL:
-				SquareBoardAStar stard = new SquareBoardAStar(b, this.x,this.y, p);
+				SquareBoardAStar stard = new SquareBoardAStar(b, this.x, this.y, p);
 				ArrayList<Node> f = stard.findPathToDiagonal(to.getX(), to.getY());
 				if (f != null
 						&& f.size() - 1 <= PieceTypeInitializer.getMaxDistance(p)) {
 					return true;
 				} else {
-					return false;
+					if (f == null) {
+						throw new EscapeException("invalid path");
+					}
+					if (f.size() - 1 > PieceTypeInitializer.getMaxDistance(p)) {
+						throw new EscapeException("Destination is too far to reach");
+					}
+
 				}
 			case ORTHOGONAL:
-				SquareBoardAStar staro = new SquareBoardAStar(b, this.x,this.y, p);
+				SquareBoardAStar staro = new SquareBoardAStar(b, this.x, this.y, p);
 				ArrayList<Node> o = staro.findPathToOrtho(to.getX(), to.getY());
 				if (o != null
-						&& o.size() - 1 <= PieceTypeInitializer.getMaxDistance(p)
-						&& OrtholegalJumps(o, to, b)) {
+						&& o.size() - 1 <= PieceTypeInitializer.getMaxDistance(p)) {
 					return true;
 				} else {
-					return false;
+					if (o == null) {
+						throw new EscapeException("invalid path");
+					}
+					if (o.size() - 1 > PieceTypeInitializer.getMaxDistance(p)) {
+						throw new EscapeException("Destination is too far to reach");
+					}
 				}
 
 		}
 
 		return false;
-
-	}
-
-	/**
-	 * check that pieces are not jumping on an L shape
-	 * 
-	 * @param list
-	 * @param to
-	 * @param b
-	 * @return
-	 */
-	public boolean OrtholegalJumps(ArrayList<SquareBoardAStar.Node> list,
-			SquareCoordinate to, SquareBoard b)
-	{
-
-		for (int i = 1; i < list.size() - 1; i++) {
-			if (b.getPieceAt(makeCoordinate(list.get(i).x, list.get(i).y)) != null
-					&& !makeCoordinate(list.get(i - 1).x, list.get(i - 1).y)
-							.sameOrthogonal(makeCoordinate(list.get(i + 1).x,
-									list.get(i + 1).y))) {
-				return false;
-			}
-
-		}
-		return true;
 
 	}
 

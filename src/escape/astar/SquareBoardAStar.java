@@ -52,14 +52,14 @@ public class SquareBoardAStar extends Astar
 		}
 	}
 
-	public SquareBoardAStar(SquareBoard b, int fromx, int fromy,
-			PieceAttribute[] p)
+	public SquareBoardAStar(SquareBoard b, int fromx, int fromy, PieceAttribute[] p)
 	{
-		super(b,fromx,fromy,p);
+		super(b, fromx, fromy, p);
 		this.open = new ArrayList<>();
 		this.closed = new ArrayList<>();
 		this.path = new ArrayList<>();
-		this.now = new Node(null, SquareCoordinate.makeCoordinate(fromx, fromy), 0, 0);
+		this.now = new Node(null, SquareCoordinate.makeCoordinate(fromx, fromy), 0,
+				0);
 	}
 
 	/*
@@ -184,10 +184,12 @@ public class SquareBoardAStar extends Astar
 						(double) SquareCoordinate.makeCoordinate(now.x, now.y)
 								.distanceTo(SquareCoordinate.makeCoordinate(x, y)));
 				if ((x != 0 || y != 0) // not this.now
-						&& this.now.x + x >= 1 && this.now.x + x < ((SquareBoard) b).getXMax() // check
-																				// maze
-																				// boundaries
-						&& this.now.y + y >= 1 && this.now.y + y < ((SquareBoard) b).getYMax() && (
+						&& this.now.x + x >= 1
+						&& this.now.x + x < ((SquareBoard) b).getXMax() // check
+						// maze
+						// boundaries
+						&& this.now.y + y >= 1
+						&& this.now.y + y < ((SquareBoard) b).getYMax() && (
 						// check location is not blocked or can fly or can unlblock
 						((SquareBoard) b).getLocationType(
 								SquareCoordinate.makeCoordinate(this.now.x + x,
@@ -195,8 +197,9 @@ public class SquareBoardAStar extends Astar
 								|| PieceTypeInitializer.canUnblock(p)
 								|| PieceTypeInitializer.canFly(p))
 						// check location is not exit or is the end
-						&& (((SquareBoard) b).getLocationType(SquareCoordinate.makeCoordinate(
-								this.now.x + x, this.now.y + y)) != LocationType.EXIT
+						&& (((SquareBoard) b).getLocationType(
+								SquareCoordinate.makeCoordinate(this.now.x + x,
+										this.now.y + y)) != LocationType.EXIT
 								|| PieceTypeInitializer.canFly(p)
 								|| SquareCoordinate.makeCoordinate(xend, yend)
 										.equals(SquareCoordinate.makeCoordinate(
@@ -375,10 +378,12 @@ public class SquareBoardAStar extends Astar
 						(double) SquareCoordinate.makeCoordinate(now.x, now.y)
 								.distanceTo(SquareCoordinate.makeCoordinate(x, y)));
 				if ((x != 0 || y != 0) // not this.now
-						&& this.now.x + x >= 1 && this.now.x + x < ((SquareBoard) b).getXMax() // check
-																				// maze
-																				// boundaries
-						&& this.now.y + y >= 1 && this.now.y + y < ((SquareBoard) b).getYMax() && (
+						&& this.now.x + x >= 1
+						&& this.now.x + x < ((SquareBoard) b).getXMax() // check
+						// maze
+						// boundaries
+						&& this.now.y + y >= 1
+						&& this.now.y + y < ((SquareBoard) b).getYMax() && (
 						// check location is not blocked or can fly or can unlblock
 						((SquareBoard) b).getLocationType(
 								SquareCoordinate.makeCoordinate(this.now.x + x,
@@ -386,8 +391,9 @@ public class SquareBoardAStar extends Astar
 								|| PieceTypeInitializer.canUnblock(p)
 								|| PieceTypeInitializer.canFly(p))
 						// check location is not exit or is the end
-						&& (((SquareBoard) b).getLocationType(SquareCoordinate.makeCoordinate(
-								this.now.x + x, this.now.y + y)) != LocationType.EXIT
+						&& (((SquareBoard) b).getLocationType(
+								SquareCoordinate.makeCoordinate(this.now.x + x,
+										this.now.y + y)) != LocationType.EXIT
 								|| PieceTypeInitializer.canFly(p)
 								|| SquareCoordinate.makeCoordinate(xend, yend)
 										.equals(SquareCoordinate.makeCoordinate(
@@ -495,10 +501,12 @@ public class SquareBoardAStar extends Astar
 								.distanceTo(SquareCoordinate.makeCoordinate(x, y)));
 				if ((x != 0 || y != 0) && (x != -1 || y != -1) && (x != -1 || y != 1)
 						&& (x != 1 || y != -1) && (x != 1 || y != 1)// not this.now
-						&& this.now.x + x >= 1 && this.now.x + x < ((SquareBoard) b).getXMax() // check
-																				// maze
-																				// boundaries
-						&& this.now.y + y >= 1 && this.now.y + y < ((SquareBoard) b).getYMax() && (
+						&& this.now.x + x >= 1
+						&& this.now.x + x < ((SquareBoard) b).getXMax() // check
+						// maze
+						// boundaries
+						&& this.now.y + y >= 1
+						&& this.now.y + y < ((SquareBoard) b).getYMax() && (
 						// check location is not blocked or can fly or can unlblock
 						((SquareBoard) b).getLocationType(
 								SquareCoordinate.makeCoordinate(this.now.x + x,
@@ -506,8 +514,9 @@ public class SquareBoardAStar extends Astar
 								|| PieceTypeInitializer.canUnblock(p)
 								|| PieceTypeInitializer.canFly(p))
 						// check location is not exit or is the end
-						&& (((SquareBoard) b).getLocationType(SquareCoordinate.makeCoordinate(
-								this.now.x + x, this.now.y + y)) != LocationType.EXIT
+						&& (((SquareBoard) b).getLocationType(
+								SquareCoordinate.makeCoordinate(this.now.x + x,
+										this.now.y + y)) != LocationType.EXIT
 								|| PieceTypeInitializer.canFly(p)
 								|| SquareCoordinate.makeCoordinate(xend, yend)
 										.equals(SquareCoordinate.makeCoordinate(

@@ -32,27 +32,31 @@ public class HexGameRules
 	}
 
 	// for getting the attributes of the piece to move
-	static HRules getDistance = (from, to, g) -> from
-			.distanceTo(to) <= PieceTypeInitializer.getMaxDistance((( g.PieceTypes
-					.get(g.b.getPieceAt(from).getName())).getAttributes()))
-			&& -1 != PieceTypeInitializer.getMaxDistance((( g.PieceTypes
+	static HRules getDistance = (from, to,
+			g) -> from.distanceTo(to) <= PieceTypeInitializer.getMaxDistance(
+					((g.PieceTypes.get(g.b.getPieceAt(from).getName()))
+							.getAttributes()))
+					&& -1 != PieceTypeInitializer.getMaxDistance(
+							((g.PieceTypes.get(g.b.getPieceAt(from).getName()))
+									.getAttributes()));
+	static HRules canJump = (from, to, g) -> PieceTypeInitializer
+			.canJump((((PieceTypeInitializer) g.PieceTypes
 					.get(g.b.getPieceAt(from).getName())).getAttributes()));
-	static HRules canJump = (from, to, g) -> PieceTypeInitializer.canJump(
-			(((PieceTypeInitializer) g.PieceTypes.get(g.b.getPieceAt(from).getName())).getAttributes()));
-	static HRules canFly = (from, to, g) -> PieceTypeInitializer.canFly(
-			(((PieceTypeInitializer) g.PieceTypes.get(g.b.getPieceAt(from).getName())).getAttributes()));
-	static HRules canUnblock = (from, to, g) -> PieceTypeInitializer.canUnblock(
-			(((PieceTypeInitializer) g.PieceTypes.get(g.b.getPieceAt(from).getName())).getAttributes()));
+	static HRules canFly = (from, to, g) -> PieceTypeInitializer
+			.canFly((((PieceTypeInitializer) g.PieceTypes
+					.get(g.b.getPieceAt(from).getName())).getAttributes()));
+	static HRules canUnblock = (from, to, g) -> PieceTypeInitializer
+			.canUnblock((((PieceTypeInitializer) g.PieceTypes
+					.get(g.b.getPieceAt(from).getName())).getAttributes()));
 
-	static HRules OmniHex = (from, to, g) ->
-			 from.PathFind(g.b, to, ((g.PieceTypes
-					.get(g.b.getPieceAt(from).getName())).getAttributes()));
+	static HRules OmniHex = (from, to, g) -> from.PathFind(g.b, to,
+			((g.PieceTypes.get(g.b.getPieceAt(from).getName())).getAttributes()));
 
 	static HRules LinearHex = (from, to, g) ->
 	// is a ortogonal path to destination
 	// from.sameLine(to) &&
 	// the distance is allowed flying or normal moving
-	      linearTestDistance(from, to, g) &&
+	linearTestDistance(from, to, g) &&
 	// the path is clear from pieces or (it can jump and there is a jumpable path) or can
 	// fly
 			(from.pathIsClear(to, g.b, null, true, false) || (canJump.hTest(from, to,
@@ -71,17 +75,14 @@ public class HexGameRules
 			// landing position is not blocked
 			((g.b).getLocationType(to) != LocationType.BLOCK) && from.sameLine(to);
 
-	
-	
-	
-	private static boolean linearTestDistance(HexCoordinate from, HexCoordinate to,HexGame g) {
-		if(getDistance.hTest(from, to, g)) {
+	private static boolean linearTestDistance(HexCoordinate from, HexCoordinate to,
+			HexGame g)
+	{
+		if (getDistance.hTest(from, to, g)) {
 			return true;
-		}
-		else {
+		} else {
 			throw new EscapeException("Destiantion is too far to reach");
 		}
 	}
-	
-	
+
 }

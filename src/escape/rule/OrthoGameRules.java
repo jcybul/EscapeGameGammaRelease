@@ -44,7 +44,7 @@ public class OrthoGameRules
 	// is a ortogonal path to destination
 	from.sameOrthogonal(to) &&
 	// the distance is allowed flying or normal moving
-			linearTestDistance(from,to,g)&&
+			linearTestDistance(from, to, g) &&
 			// the path is clear from pieces or (it can jump and there is a jumpable path)
 			// or can fly
 			(from.orthagonalILocationClear(to, (OrthoBoard) g.b, null, true, false)
@@ -72,18 +72,14 @@ public class OrthoGameRules
 					&& from.PathFind(g.b, to, (g.PieceTypes
 							.get(g.b.getPieceAt(from).getName()).getAttributes()));
 
-		
-			private static boolean linearTestDistance(OrthoSquareCoordinate from, OrthoSquareCoordinate to,OrthoGame g) {
-				if(getDistance.oTest(from, to, g)) {
-					return true;
-				}
-				else {
-					throw new EscapeException("Destiantion is too far to reach");
-				}
-			}
-					
-			
-			
-			
-			
+	private static boolean linearTestDistance(OrthoSquareCoordinate from,
+			OrthoSquareCoordinate to, OrthoGame g)
+	{
+		if (getDistance.oTest(from, to, g)) {
+			return true;
+		} else {
+			throw new EscapeException("Destiantion is too far to reach");
+		}
+	}
+
 }

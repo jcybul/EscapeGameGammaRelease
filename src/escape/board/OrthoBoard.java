@@ -124,10 +124,10 @@ public class OrthoBoard implements Board<OrthoSquareCoordinate>
 		return ortho.get(coord);
 
 	}
-	
+
 	/**
-	 * This method is a forced puth piece, be carefull when
-	 * using
+	 * This method is a forced puth piece, be carefull when using
+	 * 
 	 * @param p
 	 * @param coord
 	 */
@@ -137,7 +137,7 @@ public class OrthoBoard implements Board<OrthoSquareCoordinate>
 		// if is at exit location dont place but dont give errors
 		this.pieces.put(coord, p);
 	}
-	
+
 	/**
 	 * @return the pieces
 	 */

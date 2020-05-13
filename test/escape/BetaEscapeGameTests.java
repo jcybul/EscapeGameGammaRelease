@@ -75,6 +75,7 @@ class BetaEscapeGameTests
         EscapeGameManager emg = egb.makeGameManager();
         assertTrue(emg instanceof SquareGame);
         // Exercise the game now: make moves, check the board, etc.
+        assertTrue(emg.move(emg.makeCoordinate(5,5), emg.makeCoordinate(2, 5)));
         assertFalse(emg.move(emg.makeCoordinate(5,12), emg.makeCoordinate(5, 18)));
     }
     
@@ -1405,6 +1406,7 @@ class BetaEscapeGameTests
             = new EscapeGameBuilder(new File("config/OrthoLinear.xml"));
         EscapeGameManager emg = egb.makeGameManager();
         assertTrue(emg instanceof OrthoGame);
+        assertTrue(emg.move(emg.makeCoordinate(14,10), emg.makeCoordinate(16,10)));
         assertFalse(emg.move(emg.makeCoordinate(14,3), emg.makeCoordinate(20,3)));
         
     }
@@ -1926,6 +1928,26 @@ class BetaEscapeGameTests
         EscapeGameManager emg = egb.makeGameManager();
         assertTrue(emg instanceof HexGame); 
         assertFalse(emg.move(emg.makeCoordinate(4,-2), emg.makeCoordinate(4,1)));
+    }
+    
+    @Test
+    void HexLinear3() throws Exception
+    {
+        EscapeGameBuilder egb 
+            = new EscapeGameBuilder(new File("config/HexLinear3.xml"));
+        EscapeGameManager emg = egb.makeGameManager();
+        assertTrue(emg instanceof HexGame); 
+        assertTrue(emg.move(emg.makeCoordinate(0,0), emg.makeCoordinate(-5,5)));
+    }
+    
+    @Test
+    void HexLinear3Nopath() throws Exception
+    {
+        EscapeGameBuilder egb 
+            = new EscapeGameBuilder(new File("config/HexLinear3.xml"));
+        EscapeGameManager emg = egb.makeGameManager();
+        assertTrue(emg instanceof HexGame); 
+        assertFalse(emg.move(emg.makeCoordinate(4,0), emg.makeCoordinate(2,1)));
     }
     
     /*

@@ -29,7 +29,6 @@ public class HexBoardAStar extends Astar
 	private final ArrayList<Node> path;
 	private Node now;
 
-
 	// Node class for convienience
 	public static class Node implements Comparable
 	{
@@ -56,9 +55,9 @@ public class HexBoardAStar extends Astar
 		}
 	}
 
-	public HexBoardAStar(HexBoard b, int fromx,int fromy, PieceAttribute[] p)
+	public HexBoardAStar(HexBoard b, int fromx, int fromy, PieceAttribute[] p)
 	{
-		super(b,fromx,fromy,p);
+		super(b, fromx, fromy, p);
 		this.open = new ArrayList<>();
 		this.closed = new ArrayList<>();
 		this.path = new ArrayList<>();
@@ -128,8 +127,9 @@ public class HexBoardAStar extends Astar
 								|| PieceTypeInitializer.canUnblock(p)
 								|| PieceTypeInitializer.canFly(p))
 						// check location is not exit or is the end
-						&& (((HexBoard) b).getLocationType(HexCoordinate.makeCoordinate(
-								this.now.x + x, this.now.y + y)) != LocationType.EXIT
+						&& (((HexBoard) b).getLocationType(
+								HexCoordinate.makeCoordinate(this.now.x + x,
+										this.now.y + y)) != LocationType.EXIT
 								|| PieceTypeInitializer.canFly(p)
 								|| HexCoordinate.makeCoordinate(xend, yend).equals(
 										HexCoordinate.makeCoordinate(this.now.x + x,
@@ -191,8 +191,9 @@ public class HexBoardAStar extends Astar
 																				xstart,
 																				ystart))
 																.getPlayer())))
-						&& (((HexBoard) b).getLocationType(HexCoordinate.makeCoordinate(
-								this.now.x + x, this.now.y + y)) != LocationType.EXIT
+						&& (((HexBoard) b).getLocationType(
+								HexCoordinate.makeCoordinate(this.now.x + x,
+										this.now.y + y)) != LocationType.EXIT
 								|| PieceTypeInitializer.canFly(p)
 								|| HexCoordinate.makeCoordinate(xend, yend)
 										.equals(HexCoordinate.makeCoordinate(

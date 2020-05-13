@@ -33,6 +33,23 @@ public class SquareGame extends Game implements EscapeGameManager<SquareCoordina
 	{
 		super(gameRules, PieceTypes);
 		this.b = b;
+		initicilizePieceValue();
+	}
+
+	/**
+	 * set all the values for the pieces at the start of the game
+	 */
+	public void initicilizePieceValue()
+	{
+		if (this.b.getPieces() != null) {
+			for (PieceTypeInitializer t : PieceTypes.values()) {
+				for (EscapePiece p : b.pieces.values()) {
+					if (p.getName() == t.getPieceName()) {
+						p.setValue(PieceTypeInitializer.getValue(t.getAttributes()));
+					}
+				}
+			}
+		}
 	}
 
 	@Override
@@ -82,9 +99,6 @@ public class SquareGame extends Game implements EscapeGameManager<SquareCoordina
 		}
 
 		GameHashMapOfRules rules = new GameHashMapOfRules();
-		if (b.getPieceAt(from) == null) {
-			return false;
-		}
 
 		MovementPatternID pattern = ((PieceTypeInitializer) PieceTypes
 				.get(b.getPieceAt(from).getName())).getMovementPattern();

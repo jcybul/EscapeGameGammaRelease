@@ -59,8 +59,8 @@ public class HexBoard implements Board<HexCoordinate>
 		if (p == null && pieces.containsKey(coord)) {
 			pieces.remove(coord);
 		} else if ((getLocationType(coord) == null
-				|| getLocationType(coord) == LocationType.CLEAR) &&
-				getLocationType(coord) != LocationType.EXIT){
+				|| getLocationType(coord) == LocationType.CLEAR)
+				&& getLocationType(coord) != LocationType.EXIT) {
 			this.pieces.put(coord, p);
 		}
 
@@ -70,9 +70,10 @@ public class HexBoard implements Board<HexCoordinate>
 		}
 
 	}
+
 	/**
-	 * This method is a forced puth piece, be carefull when
-	 * using
+	 * This method is a forced puth piece, be carefull when using
+	 * 
 	 * @param p
 	 * @param coord
 	 */
@@ -95,6 +96,7 @@ public class HexBoard implements Board<HexCoordinate>
 			pieces.remove(from);
 		}
 	}
+
 	/**
 	 * @return the pieces
 	 */
@@ -102,6 +104,7 @@ public class HexBoard implements Board<HexCoordinate>
 	{
 		return pieces;
 	}
+
 	/**
 	 * Description
 	 * 

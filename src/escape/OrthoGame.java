@@ -110,9 +110,6 @@ public class OrthoGame extends Game
 		}
 
 		GameHashMapOfRules rules = new GameHashMapOfRules();
-		if (b.getPieceAt(from) == null) {
-			return false;
-		}
 
 		MovementPatternID pattern = (this.PieceTypes
 				.get(b.getPieceAt(from).getName())).getMovementPattern();

@@ -48,13 +48,14 @@ public class EscapePiece
 	}
 
 	/**
-	 * @param value the value to set
+	 * @param value
+	 *            the value to set
 	 */
 	public void setValue(int value)
 	{
 		this.value = value;
 	}
-	
+
 	/**
 	 * @return the value
 	 */
@@ -62,6 +63,7 @@ public class EscapePiece
 	{
 		return value;
 	}
+
 	/**
 	 * @return the name
 	 */

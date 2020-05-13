@@ -64,39 +64,39 @@ public class EscapeGameBuilder
 		boardInitilizer(gameBoard, gameInitializer.getLocationInitializers());
 		HashMap<PieceName, PieceTypeInitializer> type = typeInicializer(gameBoard,
 				gameInitializer.getPieceTypes());
-		HashMap<RuleID, Rule> rule =  ruleInicilizer(gameInitializer.getRules());
+		HashMap<RuleID, Rule> rule = ruleInicilizer(gameInitializer.getRules());
 		manager = GameFactory.CreateGame(gameInitializer.getCoordinateType(),
 				gameBoard, type, rule);
 		return manager;
 
 	}
-	
+
 	/**
-	 *Inicilize a hash map of rules for the given initilizers 
+	 * Inicilize a hash map of rules for the given initilizers
+	 * 
 	 * @param initializers
 	 * @return
 	 */
-	private HashMap<RuleID, Rule> ruleInicilizer(Rule...initializers){
+	private HashMap<RuleID, Rule> ruleInicilizer(Rule... initializers)
+	{
 		HashMap<RuleID, Rule> r = null;
-		if(initializers != null) {
+		if (initializers != null) {
 			r = new HashMap<>();
-		for(Rule s:initializers) {
-			r.put(s.getId(), s);
-		}
-		if(PieceTypeInitializer.pointConflict(initializers) &&
-				PieceTypeInitializer.remove(initializers)){
-			throw new EscapeException("Cant have both remove and point conflict ");
-			
-		}
-		
+			for (Rule s : initializers) {
+				r.put(s.getId(), s);
+			}
+			if (PieceTypeInitializer.pointConflict(initializers)
+					&& PieceTypeInitializer.remove(initializers)) {
+				throw new EscapeException(
+						"Cant have both remove and point conflict ");
+
+			}
+
 		}
 
 		return r;
 	}
-	
-	
-	
-	
+
 	/**
 	 * Inicialize the hashmap with the piece types
 	 * 
@@ -151,7 +151,6 @@ public class EscapeGameBuilder
 		}
 		return types;
 	}
-	
 
 	/**
 	 * Inicialize the board with the given pieces

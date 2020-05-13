@@ -1,0 +1,1 @@
+var CodeMR_ProjectMetrics = {"Project Name":"Escape-jcybul-org working set: {Escape-jcybul-org}", "Number of Highly Problematic Classes":0, "Number of Entities":48, "Number of Problematic Classes":2, "Class Lines of Code":2397, "Number of External Packages":5, "Number of Packages":8, "Number of External Entities":18}
